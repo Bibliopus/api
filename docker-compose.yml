@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  adonis-db:
+    image: 'mariadb:10.6.4'
+    ports:
+      - '3306:${MYSQL_PORT}'
+    volumes:
+      - $PWD/data:/var/lib/mysql
+    environment:
+      - MARIADB_RANDOM_ROOT_PASSWORD=yes
+    networks:
+      - api-network
+  adonis-api:
+    container_name: ${APP_NAME}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3333:3333"
+    depends_on:
+      - adonis-db
+    networks:
+      - api-network
+
+networks:
+  api-network:
