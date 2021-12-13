@@ -1,5 +1,11 @@
 version: '3.7'
 services:
+  adonis-redis:
+    image: 'redis:6.2.6'
+    ports:
+      - '6379:${REDIS_PORT}'
+    networks:
+      - api-network
   adonis-db:
     image: 'mariadb:10.6.4'
     ports:
@@ -21,6 +27,7 @@ services:
     ports:
       - "3333:3333"
     depends_on:
+      - adonis-redis
       - adonis-db
     networks:
       - api-network
