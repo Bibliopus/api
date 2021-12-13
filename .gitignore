@@ -1,8 +1,21 @@
+# Node modules and NPM cache
 node_modules
-build
+.npm
+
+# Test coverage files
 coverage
+
+# VSCode configuration
 .vscode
-.DS_STORE
+
+# Environment file
 .env
+
+# Temporary files
 tmp
+
+# Database storage
 data
+
+# Shell history (generated when using "docker exec")
+.ash_history
