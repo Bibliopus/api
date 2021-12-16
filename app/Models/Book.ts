@@ -1,6 +1,15 @@
 import { DateTime } from 'luxon';
-import { BaseModel, column, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm';
+import {
+  BaseModel,
+  column,
+  HasMany,
+  hasMany,
+  ManyToMany,
+  manyToMany,
+} from '@ioc:Adonis/Lucid/Orm';
 import Author from './Author';
+import Edition from './Edition';
+import Serie from './Serie';
 
 export default class Book extends BaseModel {
   @column({ isPrimary: true })
@@ -23,4 +32,10 @@ export default class Book extends BaseModel {
 
   @manyToMany(() => Author)
   public genres: ManyToMany<typeof Author>;
+
+  @hasMany(() => Edition)
+  public editions: HasMany<typeof Edition>;
+
+  @manyToMany(() => Serie)
+  public series: ManyToMany<typeof Serie>;
 }
