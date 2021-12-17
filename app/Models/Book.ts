@@ -10,6 +10,7 @@ import {
 import Author from './Author';
 import Edition from './Edition';
 import Serie from './Serie';
+import Genre from './Genre';
 
 export default class Book extends BaseModel {
   @column({ isPrimary: true })
@@ -30,8 +31,8 @@ export default class Book extends BaseModel {
   @manyToMany(() => Author)
   public authors: ManyToMany<typeof Author>;
 
-  @manyToMany(() => Author)
-  public genres: ManyToMany<typeof Author>;
+  @manyToMany(() => Genre)
+  public genres: ManyToMany<typeof Genre>;
 
   @hasMany(() => Edition)
   public editions: HasMany<typeof Edition>;

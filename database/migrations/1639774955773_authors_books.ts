@@ -1,7 +1,7 @@
 import BaseSchema from '@ioc:Adonis/Lucid/Schema';
 
-export default class Series extends BaseSchema {
-  protected tableName = 'series';
+export default class AuthorsBooks extends BaseSchema {
+  protected tableName = 'authors_books';
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
@@ -13,7 +13,9 @@ export default class Series extends BaseSchema {
       table.timestamp('created_at', { useTz: true });
       table.timestamp('updated_at', { useTz: true });
 
-      table.string('name');
+      table.integer('author_id').unsigned().references('authors.id');
+      table.integer('book_id').unsigned().references('books.id');
+      table.unique(['author_id', 'book_id']);
     });
   }
 

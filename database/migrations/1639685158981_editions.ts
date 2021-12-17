@@ -12,6 +12,12 @@ export default class Editions extends BaseSchema {
        */
       table.timestamp('created_at', { useTz: true });
       table.timestamp('updated_at', { useTz: true });
+
+      table
+        .integer('book_id')
+        .unsigned()
+        .references('books.id')
+        .onDelete('CASCADE');
     });
   }
 

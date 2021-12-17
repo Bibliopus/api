@@ -12,6 +12,9 @@ export default class Genres extends BaseSchema {
        */
       table.timestamp('created_at', { useTz: true });
       table.timestamp('updated_at', { useTz: true });
+
+      table.string('name');
+      table.text('description');
     });
   }
 

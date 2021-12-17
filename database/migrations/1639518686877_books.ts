@@ -12,6 +12,9 @@ export default class Books extends BaseSchema {
        */
       table.timestamp('created_at', { useTz: true });
       table.timestamp('updated_at', { useTz: true });
+
+      table.string('title');
+      table.text('synopsis');
     });
   }
 

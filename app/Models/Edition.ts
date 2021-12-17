@@ -12,6 +12,9 @@ export default class Edition extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
 
+  @column()
+  public bookId: number;
+
   @belongsTo(() => Book)
   public book: BelongsTo<typeof Book>;
 }
